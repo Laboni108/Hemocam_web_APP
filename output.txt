@@ -1,0 +1,63 @@
+output
+11
+20
+-213000
+
+number1 grater than 20
+number2: -1
+A-
+
+-10 : is EVEN
+-9 : is ODD
+-8 : is EVEN
+-7 : is ODD
+-6 : is EVEN
+-5 : is ODD
+-4 : is EVEN
+-3 : is ODD
+-2 : is EVEN
+-1 : is ODD
+0 : is EVEN
+1 : is ODD
+2 : is EVEN
+3 : is ODD
+4 : is EVEN
+5 : is ODD
+6 : is EVEN
+7 : is ODD
+8 : is EVEN
+9 : is ODD
+10 : is EVEN
+1
+0
+1
+5
+0
+2
+7.389056
+Value of PI:
+3.141593
+0
+1
+0
+2: is prime
+3: is prime
+4: is not prime
+5: is prime
+6: is not prime
+7: is prime
+8: is not prime
+9: is not prime
+10: is not prime
+11: is prime
+12: is not prime
+13: is prime
+14: is not prime
+15: is not prime
+16: is not prime
+17: is prime
+18: is not prime
+19: is prime
+Statement 1: True
+line 3: syntax error
+line 3: variable not initialized

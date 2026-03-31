@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemoglobin Detector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: #f8f1f1;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/img_tree.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            margin: 100px auto;
+    max-width: 600px;
+   
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7); 
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            color: #870b9d;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label, select, input[type="file"], button {
+            font-size: 1.1em;
+        }
+        button {
+            padding: 12px;
+            background: #810e7b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #9b0f9d;
+        }
+        .logo {
+            width: 80px;
+            margin: 0 auto 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+      
+        <h1>Hemoglobin Detector</h1>
+       
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="method">Select Method:</label>
+            <select name="method" id="method" required>
+                <option value="" disabled selected>Choose a method</option>
+                <option value="flashlight">Flashlight</option>
+                <option value="nail">Nail</option>
+            </select>
+            <label for="image">Upload Image:</label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+            <button type="submit">Detect Hemoglobin</button>
+        </form>
+        <p class="result" id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById('method').addEventListener('change', function () {
+            if (this.value === 'flashlight') {
+                // Redirect to camera page with flashlight
+                window.location.href = '/camera';
+            }
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                const resultElement = document.getElementById('result');
+
+                if (response.ok) {
+                    resultElement.textContent = `Hemoglobin Level: ${data.hemoglobin_level} g/dL`;
+                } else {
+                    resultElement.textContent = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').textContent = 'An error occurred.';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+// This is comment
+
+// All variables are declared globally 
+// Declare variables
+
+i := 11;
+firstVariable := 20;
+last_ := -21.3e+4;
+
+display "Value of i: ";
+display i;
+
+
+
+display "Value of firstVariable: ";
+display firstVariable;
+
+
+display "Value of last_: ";
+display last_;
+
+
+
+// conditional else if
+
+number1 := 21.5;
+
+if (number1 > 20) then {
+    display "number1 grater than 20\n";
+
+    number2 := 0;
+    if number2 = 0 then number2 := -1;      // nested if-else
+    else number2 := 1;
+
+    display "number2: ";
+   display number2;
+    display "\n";
+}
+else {
+    display "number1 less than 20\n";
+    display number1;
+    display "\n";
+}
+
+// conditional else if
+
+marks := 79;
+
+display "Marks: ";
+display marks;
+display "\n";
+
+if marks > 10 and marks < 60 then display "F";
+else if marks >= 60 and marks < 70 then display "B\n";
+else if marks >= 70 and marks < 75 then display "B+\n";
+else if marks >= 75 and marks < 80 then display "A-\n";
+else if marks >= 80 and marks <= 100 then display "A+\n";
+else display "Invalid marks\n";
+
+
+// while loop
+
+start := -10;
+end := 10;
+
+// Even/odd numbers between (start - end)
+number := start;
+while number <= end then {
+    display number;
+    if number % 2 = 0 then display " : is EVEN\n";
+    else display " : is ODD\n";
+
+    number := number + 1;
+}
+
+exit;
+
+// for loop
+
+number := 0;
+for number : (-10, 0, 1) then {
+    display number;
+    if number % 2 = 0 then display " : is EVEN\n";
+    else display " : is ODD\n";
+}
+
+for number : (10, -1, -1) then {
+    display number;
+    if number % 2 = 0 then display " : is EVEN\n";
+    else display " : is ODD\n";
+}
+
+// math_logarithm 
+
+
+// e base log
+x := 1;
+display x;
+display log(x);
+
+
+// n base log
+base := floor(5.6);
+display x;
+display base;
+display log(x, base);
+
+
+// e^x
+x := 2;
+display x;
+display exp(x);
+
+
+//exit keyword
+exit;
+
+
+
+
+// math_trigionometry 
+
+display "Value of PI: ";
+display PI;
+
+
+x := 2*PI;
+
+// SIN
+
+display x/PI;
+
+result := sin(x);
+display result;
+
+// COS
+result1 := cos(x);
+display result1;
+
+
+
+// TAN
+result2 := tan(x);
+display result2;
+
+
+// prime number 
+
+
+number := 2;
+for number : (number, 20, 1) then {
+    // Code for checking if 'number' is prime
+    flag := 1;
+    i := 2;
+    while i <= number/2 then {
+        if number % i = 0 then {
+           display number;
+            display ": is not prime\n";
+
+            flag := 0;
+            i := number;    // To break from loop
+        }
+        i := i + 1;
+    }
+    if flag then {
+        display number;
+       display ": is prime\n";
+    }
+}
+ exit;
+ // logical operation 
+
+a := 0;
+b := 1;
+c := 1;
+d := 0;
+
+if (not d) then {
+    if (a < b and a < c ) then display "Statement 1: True\n";
+    else display "Statement 1: False\n";
+}
+
+exit;
+
+// error checking 
+ // missing semicolon
+x := 0;
+y := 1
+display x;
+
+
+// spelling mistake 
+
+x := 0;
+y := 1;
+disply x;
+
+
+ // run commands
+bison -d zozo.y
+flex zozo.l
+gcc zozo.tab.c lex.yy.c -o run
+run
+
+

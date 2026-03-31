@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #252424, #601e6a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        video {
+            width: 90%;
+            max-width: 500px;
+            border: 5px solid #f4eef5;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background: #8f0878;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #a21383;
+        }
+    </style>
+</head>
+<body>
+    <h1>Capture Video</h1>
+    <video id="video" autoplay playsinline></video>
+    <button id="capture">Capture Frame</button>
+    <p id="status"></p>
+
+    <script>
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('capture');
+        const status = document.getElementById('status');
+
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment', torch: true },
+                    audio: false
+                });
+
+                video.srcObject = stream;
+
+                
+                const track = stream.getVideoTracks()[0];
+                const capabilities = track.getCapabilities();
+
+                if (capabilities.torch) {
+                    await track.applyConstraints({ advanced: [{ torch: true }] });
+                } else {
+                    status.textContent = "Flashlight not supported on this device.";
+                }
+            } catch (error) {
+                console.error('Error accessing the camera:', error);
+                status.textContent = "Could not access the camera.";
+            }
+        }
+
+        captureButton.addEventListener('click', () => {
+            status.textContent = "Frame captured!";
+            
+        });
+
+        startCamera();
+    </script>
+</body>
+</html>
