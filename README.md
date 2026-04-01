@@ -63,17 +63,13 @@ Then navigate to `http://localhost:5000` (or your configured port) in your web b
 - **Backend** - Python application logic and data processing
 - **Lexer Files** - Lex-based lexical analyzer
 
-## Usage
 
-[Add specific usage instructions for your application]
 
 ## Contributing
 
 We welcome contributions! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
-## License
 
-[Specify your license here - e.g., MIT, Apache 2.0, etc.]
 
 ## Contact
 
